@@ -1,0 +1,68 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "space x. roadster",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "LocationIntent",
+          "slots": [],
+          "samples": [
+            "how far away is it",
+            "how far is the roadster from earth",
+            "how far is it",
+            "where is it",
+            "where is the roadster"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "ChangeUnitsIntent",
+          "slots": [
+            {
+              "name": "units",
+              "type": "RoadsterUnits"
+            }
+          ],
+          "samples": [
+            "Change units to {units}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "M",
+              "name": {
+                "value": "Miles"
+              }
+            },
+            {
+              "id": "K",
+              "name": {
+                "value": "Kilometers"
+              }
+            }
+          ],
+          "name": "RoadsterUnits"
+        }
+      ]
+    }
+  },
+  "version": "10"
+}
