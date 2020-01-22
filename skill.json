@@ -25,13 +25,13 @@
     "publishingInformation": {
       "locales": {
         "en-GB": {
-          "name": "Roadster in Space",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/922f/146471689791467ab940c7cf0c23f554/APP_ICON?versionId=87bcTrmN4l7mLspqizYhzmE8z3NOkFfe&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200107T144349Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200107%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=acb33dc5b36922b0c442ddf3feff8a0e8b65d5654667e30246f724b1121643ee",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/b982/514a8e034c684ca785697da8903bb39c/APP_ICON_LARGE?versionId=e9ntJ.bEQdVckNRQJmgBRSbPY5q9t2Jm&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200107T144349Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200107%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=8a59194e76568e2e2bf9ca9e53253530a9017bd4f4515e73163a2fece5de480e",
-          "summary": "Find out where Space/X's Tesla Roadster is now",
-          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the location of Elon Musk's Tesla Roadster, which is, at present, in orbit around the Sun!",
+          "name": "Space/X Information",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/922f/146471689791467ab940c7cf0c23f554/APP_ICON?versionId=87bcTrmN4l7mLspqizYhzmE8z3NOkFfe&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200122T113705Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200122%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=a71bc622404f35afb3122e6ff0f78f6189437d5d3b69d5ce231609c77f062d58",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/b982/514a8e034c684ca785697da8903bb39c/APP_ICON_LARGE?versionId=e9ntJ.bEQdVckNRQJmgBRSbPY5q9t2Jm&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200122T113705Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200122%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=e5057f13717ab7dfd39bffd9c7def1b6b70f974f70a1ccf1106f83d92ed41549",
+          "summary": "Find out about Space/X's activities",
+          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun",
           "examplePhrases": [
-            "Alexa open space ex roadster",
+            "Alexa open space x. roadster",
             "where is it",
             "help"
           ],
@@ -42,7 +42,7 @@
             "Elon",
             "Musk"
           ],
-          "updatesDescription": "This is the first release of this Skill - there will be more to come !"
+          "updatesDescription": "* Added better granular help\n* Added orbit information"
         }
       },
       "isAvailableWorldwide": false,

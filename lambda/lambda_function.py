@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
-# This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK for Python.
-# Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
-# session persistence, api calls, and more.
-# This sample is built using the handler classes approach in skill builder.
+# Version 0.0.1 - ALS - 12/01/2020      Initial release - distance only
+#         0.0.2 - ALS - 21/01/2020      Added distance from Mars, Speed and orbit information
+#                                       Commenced adding detailled, more granular help function
+#                                       Split up code to make it tidier and more modular
+#                                       Renamed from "Roadster in Space" to "Space/X Information"
+
+
+
 import logging
 import ask_sdk_core.utils as ask_utils
-
-
-from roadster import roadster
 
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
@@ -17,64 +18,29 @@ from ask_sdk_core.handler_input import HandlerInput
 
 from ask_sdk_model import Response
 
+# Import core intent handling classes
+from CoreIntentHandlers.LaunchRequestHandler import LaunchRequestHandler
+from CoreIntentHandlers.CancelOrStopIntentHandler import CancelOrStopIntentHandler
+from CoreIntentHandlers.CatchAllExceptionHandler import CatchAllExceptionHandler
+from CoreIntentHandlers.IntentReflectorHandler import IntentReflectorHandler
+
+# Granular Help Handler
+from CoreIntentHandlers.AssistanceIntentHandler import AssistanceIntentHandler
+
+
+# Import functional intent handling classes
+from FunctionalIntentHandlers.Roadster.Handlers import \
+RoadsterOrbitIntentHandler,SpeedIntentHandler,         \
+RoadsterLocationIntentHandler,MarsIntentHandler
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-
-class LaunchRequestHandler(AbstractRequestHandler):
-    """Handler for Skill Launch."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-
-        return ask_utils.is_request_type("LaunchRequest")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        speak_output = "Welcome, I can tell you about Elon Musk's Tesla Roadster that's in space - say Help for more information about what you can ask me to do"
-        session_attr = handler_input.attributes_manager.session_attributes
-        handler_input.attributes_manager.session_attributes["Units"] = "Miles"
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .ask(speak_output)
-                .response
-        )
+from roadster import roadster
 
 
-class LocationIntentHandler(AbstractRequestHandler):
-    """Handler for Hello World Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("LocationIntent")(handler_input)
 
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        units = handler_input.attributes_manager.session_attributes["Units"]
-        loc = roadster(1,str(units))
-        speak_output=str(loc)
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .response
-        )
-
-
-class HelpIntentHandler(AbstractRequestHandler):
-    """Handler for Help Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("AMAZON.HelpIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        speak_output = "You can say help, or ask me where the roadster is, by saying,, where is it,,or by saying,,change units to kilometers or miles, you are able to change the units of any responses I give you"
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .ask(speak_output)
-                .response
-        )
 
 class ChangeUnitsIntentHandler(AbstractRequestHandler):
     """Handler for Change units Intent."""
@@ -88,28 +54,10 @@ class ChangeUnitsIntentHandler(AbstractRequestHandler):
         units = slots['units'].value
         speak_output = "Your units are now," + str(units)
         handler_input.attributes_manager.session_attributes["Units"] = str(units)
-        
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
-                .response
-        )
-
-class CancelOrStopIntentHandler(AbstractRequestHandler):
-    """Single handler for Cancel and Stop Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return (ask_utils.is_intent_name("AMAZON.CancelIntent")(handler_input) or
-                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input))
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        speak_output = "Goodbye!"
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
                 .response
         )
 
@@ -127,44 +75,15 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
 
         return handler_input.response_builder.response
 
-
-class IntentReflectorHandler(AbstractRequestHandler):
-    """The intent reflector is used for interaction model testing and debugging.
-    It will simply repeat the intent the user said. You can create custom handlers
-    for your intents by defining them above, then also adding them to the request
-    handler chain below.
-    """
+class HelpIntentHandler(AbstractRequestHandler):
+    """Handler for Help Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return ask_utils.is_request_type("IntentRequest")(handler_input)
+        return ask_utils.is_intent_name("AMAZON.HelpIntent")(handler_input)
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        intent_name = ask_utils.get_intent_name(handler_input)
-        speak_output = "You just triggered " + intent_name + "."
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                # .ask("add a reprompt if you want to keep the session open for the user to respond")
-                .response
-        )
-
-
-class CatchAllExceptionHandler(AbstractExceptionHandler):
-    """Generic error handling to capture any syntax or routing errors. If you receive an error
-    stating the request handler chain is not found, you have not implemented a handler for
-    the intent being invoked or included it in the skill builder below.
-    """
-    def can_handle(self, handler_input, exception):
-        # type: (HandlerInput, Exception) -> bool
-        return True
-
-    def handle(self, handler_input, exception):
-        # type: (HandlerInput, Exception) -> Response
-        logger.error(exception, exc_info=True)
-
-        speak_output = "Sorry, I had trouble doing what you asked. Please try again."
+        speak_output = "You can find out about Elon Musks roadster, Space ex launches, and other things you can do by saying,, help me with,, and a specific area, such as roadster, launches or units"
 
         return (
             handler_input.response_builder
@@ -172,22 +91,37 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
                 .ask(speak_output)
                 .response
         )
-    
-# The SkillBuilder object acts as the entry point for your skill, routing all request and response
-# payloads to the handlers above. Make sure any new handlers or interceptors you've
-# defined are included below. The order matters - they're processed top to bottom.
 
+# The SkillBuilder object acts as the entry point for the skill, routing all request and response
+# payloads to the handlers above. 
 
 sb = SkillBuilder()
 
+# Skill startup Handler
 sb.add_request_handler(LaunchRequestHandler())
-sb.add_request_handler(LocationIntentHandler())
+
+# Roadster Handlers
+sb.add_request_handler(MarsIntentHandler())
+sb.add_request_handler(AssistanceIntentHandler())
+sb.add_request_handler(RoadsterOrbitIntentHandler())
+sb.add_request_handler(RoadsterLocationIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
+sb.add_request_handler(SpeedIntentHandler())
+
+# Shared Component Handlers
 sb.add_request_handler(ChangeUnitsIntentHandler())
+
+# Core Handlers
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
-sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
+sb.add_request_handler(IntentReflectorHandler()) # This MUST be last so it doesn't override the custom intent handlers
 
+# Exception Handler to deal with mop up
 sb.add_exception_handler(CatchAllExceptionHandler())
 
 lambda_handler = sb.lambda_handler()
+
+
+
+
+# End of Lambda Function

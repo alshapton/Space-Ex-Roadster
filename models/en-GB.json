@@ -9,14 +9,16 @@
         },
         {
           "name": "AMAZON.HelpIntent",
-          "samples": []
+          "samples": [
+            "Help"
+          ]
         },
         {
           "name": "AMAZON.StopIntent",
           "samples": []
         },
         {
-          "name": "LocationIntent",
+          "name": "RoadsterLocation",
           "slots": [],
           "samples": [
             "how far away is it",
@@ -41,6 +43,51 @@
           "samples": [
             "Change units to {units}"
           ]
+        },
+        {
+          "name": "SpeedIntent",
+          "slots": [],
+          "samples": [
+            "Whats its speed",
+            "What is its speed",
+            "How fast",
+            "How fast is it going "
+          ]
+        },
+        {
+          "name": "MarsIntent",
+          "slots": [],
+          "samples": [
+            "how close is it to mars",
+            "how far is the roadster from mars",
+            "How far is it from mars"
+          ]
+        },
+        {
+          "name": "RoadsterOrbit",
+          "slots": [],
+          "samples": [
+            "whats the cars orbit",
+            "tell me about its orbit",
+            "what is the roadsters orbit",
+            "tell me about the cars orbit",
+            "tell me about the roadsters orbit"
+          ]
+        },
+        {
+          "name": "Assist",
+          "slots": [
+            {
+              "name": "assistanceSubject",
+              "type": "AssistanceSubjectType",
+              "samples": [
+                "{assistanceSubject}"
+              ]
+            }
+          ],
+          "samples": [
+            "help me with {assistanceSubject}"
+          ]
         }
       ],
       "types": [
@@ -60,9 +107,117 @@
             }
           ],
           "name": "RoadsterUnits"
+        },
+        {
+          "values": [
+            {
+              "id": "units",
+              "name": {
+                "value": "change units",
+                "synonyms": [
+                  "metric",
+                  "imperial",
+                  "units",
+                  "miles",
+                  "kilometers"
+                ]
+              }
+            },
+            {
+              "id": "launch",
+              "name": {
+                "value": "launch",
+                "synonyms": [
+                  "take off",
+                  "launches"
+                ]
+              }
+            },
+            {
+              "id": "company",
+              "name": {
+                "value": "company",
+                "synonyms": [
+                  "api",
+                  "info",
+                  "information",
+                  "space x"
+                ]
+              }
+            },
+            {
+              "id": "roadster",
+              "name": {
+                "value": "Roadster",
+                "synonyms": [
+                  "orbit",
+                  "Tesla model 3",
+                  "car"
+                ]
+              }
+            }
+          ],
+          "name": "AssistanceSubjectType"
         }
       ]
-    }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "Assist",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "assistanceSubject",
+              "type": "AssistanceSubjectType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.226658315051.1175323419519"
+              },
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.815910163873.704926082380.291307659562"
+                }
+              ]
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.809945303351.974388044800",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What do you need help with ?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.815910163873.704926082380.291307659562",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Sorry, I didnt understand what you want help with,, please try again"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.226658315051.1175323419519",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please tell me what you need help with, roadster, units or launches"
+          }
+        ]
+      }
+    ]
   },
-  "version": "10"
+  "version": "34"
 }

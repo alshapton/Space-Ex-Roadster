@@ -16,9 +16,12 @@ function:
 import requests
 import json
 import inflect
+from utilities import km_to_au,mi_to_au,au_to_mi,km_to_au
 
+# https://space.stackexchange.com/questions/13825/how-to-obtain-utc-of-the-epoch-time-in-a-satellite-tle-two-line-element
+# Convert epoch_jd to UTC
 
-def roadster(timeOut=1,units="miles"):
+def roadster(timeOut=1,units="miles",task="distance"):
     """
 
     :type timeOut: Optional[int]
@@ -43,13 +46,61 @@ def roadster(timeOut=1,units="miles"):
     version = "v3"
     roadster_url = base + "/" + version + "/roadster"
     result = json.loads(json.dumps(requests.get(url = str(roadster_url),timeout = timeOut).json()))
-    # Get appropriate distance depending on units
-    if (str(units) == "None"):
-        units="Miles"
-    if units.lower() == "kilometers":
-        dist=int(float(result['earth_distance_km']))
-    if units.lower() == "miles":
-        dist=int(float(result['earth_distance_mi']))
+    SPEECH = "Sorry, I couldnt understand what you need me to do, maybe you could try again?"
+    # Get instance of the number to words engine
     p = inflect.engine()
-    distance_away = p.number_to_words(dist)
-    return "The roadster is " + distance_away + " " + str(units) + " away from Earth"
+
+    # Distance from Earth
+    if (task == "distance"):
+        # Get appropriate distance depending on units
+        if (str(units) == "None"):
+            units="Miles"
+        if units.lower() == "kilometers":
+            dist=int(float(result['mars_distance_km']))
+        if units.lower() == "miles":
+            dist=int(float(result['mars_distance_mi']))
+        distance_away = p.number_to_words(dist)
+        SPEECH = "The roadster is " + distance_away + " " + str(units) + " away from Earth"
+        
+    # Distance from Mars
+    if (task == "mars"):
+        # Get appropriate distance depending on units
+        if (str(units) == "None"):
+            units="Miles"
+        if units.lower() == "kilometers":
+            dist=int(float(result['earth_distance_km']))
+        if units.lower() == "miles":
+            dist=int(float(result['earth_distance_mi']))
+        distance_away = p.number_to_words(dist)
+        SPEECH = "The roadster is " + distance_away + " " + str(units) + " away from Mars"
+    
+    # Travelling speed
+    if (task == "speed"):
+        # Get appropriate speed depending on units
+        if (str(units) == "None"):
+            units="Miles"
+        if units.lower() == "kilometers":
+            speed=int(float(result['speed_kph']))
+        if units.lower() == "miles":
+            speed=int(float(result['speed_mph']))
+        fast = p.number_to_words(speed)
+        SPEECH = "The roadster is travelling at " + fast + " " + str(units) + " per hour"
+    
+    # orbit details
+    if (task == "orbit"):
+        # Get appropriate speed depending on units
+        if (str(units) == "None"):
+            units="Miles"
+        if units.lower() == "kilometers":
+            speed=int(float(result['speed_kph']))
+        if units.lower() == "miles":
+            speed=int(float(result['speed_mph']))
+        orbit_type = result['orbit_type']
+        period=int(float(result['period_days']))
+        fast = p.number_to_words(speed)
+        SPEECH = "The roadster has a " + orbit_type + " orbit, is travelling at " + fast + " " + str(units) + " per hour,,"
+        SPEECH = SPEECH + "It has a period of " + p.number_to_words(period) + " days."
+    
+    return SPEECH
+    
+    
