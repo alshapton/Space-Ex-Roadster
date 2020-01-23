@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "space x. roadster",
+      "invocationName": "space x. info",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -219,5 +219,5 @@
       }
     ]
   },
-  "version": "34"
+  "version": "7"
 }

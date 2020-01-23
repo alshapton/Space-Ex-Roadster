@@ -1,5 +1,8 @@
-# Space-Ex-Roadster
+# Space/X Information
 
+# Invocation
+
+Use "Alexa, open SpaceX info" to invoke the skill
 
 # Release History
 

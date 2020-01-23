@@ -23,4 +23,3 @@ def create_presigned_url(object_name):
 
     # The response contains the presigned URL
     return response
-    

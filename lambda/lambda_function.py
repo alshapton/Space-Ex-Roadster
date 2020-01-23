@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Version 0.0.1 - ALS - 12/01/2020      Initial release - distance only
-#         0.0.2 - ALS - 21/01/2020      Added distance from Mars, Speed and orbit information
+# Version 0.0.1 - ALS - 12/01/2010      Initial release - distance only
+#         0.0.2 - ALS -                 Added distance from Mars, Speed and orbit information
 #                                       Commenced adding detailled, more granular help function
 #                                       Split up code to make it tidier and more modular
-#                                       Renamed from "Roadster in Space" to "Space/X Information"
 
 
 
@@ -83,7 +82,7 @@ class HelpIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "You can find out about Elon Musks roadster, Space ex launches, and other things you can do by saying,, help me with,, and a specific area, such as roadster, launches or units"
+        speak_output = "You can find out about Elon Musks roadster,by saying,, help me with,, and a specific area, such as roadster, units"
 
         return (
             handler_input.response_builder
