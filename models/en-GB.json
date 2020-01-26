@@ -37,7 +37,7 @@
           "slots": [
             {
               "name": "units",
-              "type": "RoadsterUnits"
+              "type": "RoadsterUnitsType"
             }
           ],
           "samples": [
@@ -45,7 +45,7 @@
           ]
         },
         {
-          "name": "SpeedIntent",
+          "name": "RoadsterSpeed",
           "slots": [],
           "samples": [
             "Whats its speed",
@@ -88,6 +88,24 @@
           "samples": [
             "help me with {assistanceSubject}"
           ]
+        },
+        {
+          "name": "RoadsterInfo",
+          "slots": [
+            {
+              "name": "RoadsterInformation",
+              "type": "RoadsterInfoType",
+              "samples": [
+                "{RoadsterInformation}"
+              ]
+            }
+          ],
+          "samples": [
+            "tell me all about the tesla",
+            "tell me about the tesla",
+            "tell me about the car",
+            "tell me about the roadster"
+          ]
         }
       ],
       "types": [
@@ -106,7 +124,7 @@
               }
             }
           ],
-          "name": "RoadsterUnits"
+          "name": "RoadsterUnitsType"
         },
         {
           "values": [
@@ -158,6 +176,36 @@
             }
           ],
           "name": "AssistanceSubjectType"
+        },
+        {
+          "values": [
+            {
+              "id": "No",
+              "name": {
+                "value": "No",
+                "synonyms": [
+                  "partial",
+                  "nope",
+                  "No thanks",
+                  "basic"
+                ]
+              }
+            },
+            {
+              "id": "Yes",
+              "name": {
+                "value": "Yes",
+                "synonyms": [
+                  "extended",
+                  "please",
+                  "yes please",
+                  "yup",
+                  "full"
+                ]
+              }
+            }
+          ],
+          "name": "RoadsterInfoType"
         }
       ]
     },
@@ -182,6 +230,23 @@
                   "prompt": "Slot.Validation.815910163873.704926082380.291307659562"
                 }
               ]
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        },
+        {
+          "name": "RoadsterInfo",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "RoadsterInformation",
+              "type": "RoadsterInfoType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1370697234552.184977058172"
+              }
             }
           ],
           "delegationStrategy": "ALWAYS"
@@ -216,8 +281,25 @@
             "value": "Please tell me what you need help with, roadster, units or launches"
           }
         ]
+      },
+      {
+        "id": "Elicit.Slot.1370697234552.184977058172",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "would you like basic or full details"
+          },
+          {
+            "type": "PlainText",
+            "value": "Would you like all the roadster information"
+          },
+          {
+            "type": "PlainText",
+            "value": "Do you need full roadster information "
+          }
+        ]
       }
     ]
   },
-  "version": "7"
+  "version": "15"
 }

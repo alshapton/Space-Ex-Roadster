@@ -1,0 +1,10 @@
+{
+  "type": "APL",
+  "version": "1.2",
+  "mainTemplate": {
+    "item": {
+      "type": "Text",
+      "text": "Welcome, I can tell you about Elon Musk's Tesla Roadster that's in space - say Help for more information about what you can ask me to do."
+    }
+  }
+}

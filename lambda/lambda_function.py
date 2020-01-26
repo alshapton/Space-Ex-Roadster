@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Version 0.0.1 - ALS - 12/01/2010      Initial release - distance only
-#         0.0.2 - ALS -                 Added distance from Mars, Speed and orbit information
-#                                       Commenced adding detailled, more granular help function
-#                                       Split up code to make it tidier and more modular
-
-
-
 import logging
 import ask_sdk_core.utils as ask_utils
 
@@ -29,14 +22,14 @@ from CoreIntentHandlers.AssistanceIntentHandler import AssistanceIntentHandler
 
 # Import functional intent handling classes
 from FunctionalIntentHandlers.Roadster.Handlers import \
-RoadsterOrbitIntentHandler,SpeedIntentHandler,         \
-RoadsterLocationIntentHandler,MarsIntentHandler
+RoadsterOrbitIntentHandler,RoadsterSpeedHandler,         \
+RoadsterLocationIntentHandler,MarsIntentHandler,RoadsterInfoHandler
 
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-from roadster import roadster
+#from roadster import roadster
 
 
 
@@ -105,7 +98,9 @@ sb.add_request_handler(AssistanceIntentHandler())
 sb.add_request_handler(RoadsterOrbitIntentHandler())
 sb.add_request_handler(RoadsterLocationIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
-sb.add_request_handler(SpeedIntentHandler())
+sb.add_request_handler(RoadsterSpeedHandler())
+sb.add_request_handler(RoadsterInfoHandler())
+
 
 # Shared Component Handlers
 sb.add_request_handler(ChangeUnitsIntentHandler())

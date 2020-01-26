@@ -5,7 +5,45 @@
         "endpoint": {
           "uri": "arn:aws:lambda:us-east-1:609294445642:function:d5aa471d-de4e-4f11-8ea4-486a9184bcc5:Release_1"
         },
-        "interfaces": []
+        "interfaces": [
+          {
+            "type": "ALEXA_PRESENTATION_APL",
+            "supportedViewports": [
+              {
+                "mode": "HUB",
+                "shape": "ROUND",
+                "minWidth": 480,
+                "maxWidth": 480,
+                "minHeight": 480,
+                "maxHeight": 480
+              },
+              {
+                "mode": "HUB",
+                "shape": "RECTANGLE",
+                "minWidth": 1024,
+                "maxWidth": 1024,
+                "minHeight": 600,
+                "maxHeight": 600
+              },
+              {
+                "mode": "HUB",
+                "shape": "RECTANGLE",
+                "minWidth": 1280,
+                "maxWidth": 1280,
+                "minHeight": 800,
+                "maxHeight": 800
+              },
+              {
+                "mode": "TV",
+                "shape": "RECTANGLE",
+                "minWidth": 960,
+                "maxWidth": 960,
+                "minHeight": 540,
+                "maxHeight": 540
+              }
+            ]
+          }
+        ]
       }
     },
     "manifestVersion": "1.0",
@@ -26,8 +64,8 @@
       "locales": {
         "en-GB": {
           "name": "Space/X Information",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/922f/146471689791467ab940c7cf0c23f554/APP_ICON?versionId=87bcTrmN4l7mLspqizYhzmE8z3NOkFfe&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200123T100349Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=b441b213e8ffc32d5e71910b541f698fbaaaa6985cc385f5ea788765512d3a3a",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/b982/514a8e034c684ca785697da8903bb39c/APP_ICON_LARGE?versionId=e9ntJ.bEQdVckNRQJmgBRSbPY5q9t2Jm&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200123T100349Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=db8b800e40c20995fae88e073d9335b3f44fa72bb07447acf39f7e60a456f62e",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/922f/146471689791467ab940c7cf0c23f554/APP_ICON?versionId=87bcTrmN4l7mLspqizYhzmE8z3NOkFfe&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200124T222348Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200124%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=638e0b3820473807d5890ffa90508150224fe6770b882966477ed1ff40480aee",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/b982/514a8e034c684ca785697da8903bb39c/APP_ICON_LARGE?versionId=e9ntJ.bEQdVckNRQJmgBRSbPY5q9t2Jm&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200124T222348Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200124%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=403d7b566ed761f9e1ec0d9809b313a637a50c8f3281624765dfa14e0784cead",
           "summary": "Find out about Space/X's activities",
           "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun",
           "examplePhrases": [

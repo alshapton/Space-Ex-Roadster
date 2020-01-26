@@ -86,7 +86,7 @@ def roadster(timeOut=1,units="miles",task="distance"):
         if units.lower() == "miles":
             speed=int(float(result['speed_mph']))
         fast = p.number_to_words(speed)
-        SPEECH = "The roadster is travelling at " + fast + " " + str(units) + " per hour"
+        SPEECH = fast + " " + str(units) + " per hour"
     
     # orbit details
     if (task == "orbit"):
@@ -100,7 +100,7 @@ def roadster(timeOut=1,units="miles",task="distance"):
         orbit_type = result['orbit_type']
         period=int(float(result['period_days']))
         fast = p.number_to_words(speed)
-        SPEECH = "The roadster has a " + orbit_type + " orbit, is travelling at " + fast + " " + str(units) + " per hour,,"
+        SPEECH = " a " + orbit_type + " orbit, is travelling at " + fast + " " + str(units) + " per hour,,"
         SPEECH = SPEECH + "It has a period of " + p.number_to_words(period) + " days."
     
     # roadster details
@@ -111,7 +111,7 @@ def roadster(timeOut=1,units="miles",task="distance"):
     # NORAD ID
     if (task == "norad"):
         # Get the textual description
-        SPEECH = result['norad_id']
+        SPEECH = p.number_to_words(int(str(result['norad_id'])), group=1).replace(","," ")
         
     # roadster name
     if (task == "name"):
