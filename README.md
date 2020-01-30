@@ -7,8 +7,11 @@ Use "Alexa, open SpaceX info" to invoke the skill
 # Release History
 
         0.0.3 - ALS -               * Initial support for display devices
+                                    * Split roadster information up into basic, full and extended levels
                                     * More code modularisation
                                     * further work on granular help
+                                    * Started to add support for next launch
+                                    * Added some (quiescent) initial ship support
         
         0.0.2 - ALS -   21/01/2020  * Added distance from Mars, Speed and orbit information
                                     * Commenced adding detailled, more granular help function

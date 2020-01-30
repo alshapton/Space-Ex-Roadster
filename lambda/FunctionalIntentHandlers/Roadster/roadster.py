@@ -108,6 +108,43 @@ def roadster(timeOut=1,units="miles",task="distance"):
         # Get the textual description
         SPEECH = result['details']
 
+    # apoapsis
+    if (task == "apoapsis_au"):
+        # Get the apoapsis in AU
+        SPEECH = p.number_to_words(str(result['apoapsis_au']),group=1).replace(","," ")
+
+    # periapsis
+    if (task == "periapsis_au"):
+        # Get the periapsis in AU
+        SPEECH = p.number_to_words(str(result['periapsis_au']),group=1).replace(","," ")
+
+    # Periapsis Argument
+    if (task == "periapsis_arg"):
+        # Get the periapsis argument
+        SPEECH = p.number_to_words(str(result['periapsis_arg']),group=1).replace(","," ")
+
+     # Semi-major axis
+    if (task == "semi_major_axis"):
+        # Get the semi major axis in AU
+        SPEECH = p.number_to_words(str(result['semi_major_axis_au']),group=1).replace(","," ")
+
+    # Eccentricity
+    if (task == "eccentricity"):
+        # Get the orbital eccentricity
+        SPEECH = p.number_to_words(str(result['eccentricity']),group=1).replace(","," ")
+
+    # Inclination
+    if (task == "inclination"):
+        # Get the orbital inclination
+        SPEECH = p.number_to_words(str(result['inclination']),group=1).replace(","," ")
+
+    # Longitude
+    if (task == "longitude"):
+        # Get the longitude of the ascending node
+        SPEECH = p.number_to_words(str(result['longitude']),group=1).replace(","," ")
+
+
+
     # NORAD ID
     if (task == "norad"):
         # Get the textual description

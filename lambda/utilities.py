@@ -1,4 +1,6 @@
 import inflect
+import requests
+import json
 
 AU_KM = 149597871
 AU_MI = 92955807
@@ -28,7 +30,7 @@ def convert_date_to_speech(longlaunchdateutc="No date",fmt="short"):
 
     launchyear  = p.number_to_words(int(longlaunchdateutc[0:4]))
     launchmonth = num_to_month(int(longlaunchdateutc[6:7]))
-    launchday   = p.ordinal(int(longlaunchdateutc[9:10]))
+    launchday   = p.ordinal(int(longlaunchdateutc[8:10]))
     
     launchhour  = p.number_to_words(int(longlaunchdateutc[11:13]))
     if (int(longlaunchdateutc[11:13]) < 10):
@@ -51,3 +53,17 @@ def convert_date_to_speech(longlaunchdateutc="No date",fmt="short"):
         launchdatetime = launchday + " of " + launchmonth + " " + launchyear 
         
     return launchdatetime
+
+
+def getJson(timeOut=1,url_segment=""):
+    """ Base URL from which to assemble request URLs """
+    base = "https://api.spacexdata.com"
+
+    """ API Version """
+    version = "v3"
+    root_url = base + "/" + version + "/"
+
+    result = json.loads(json.dumps(requests.get(url = str(root_url + url_segment),timeout = timeOut).json()))
+    return result
+    
+

@@ -21,17 +21,17 @@ from CoreIntentHandlers.AssistanceIntentHandler import AssistanceIntentHandler
 
 
 # Import functional intent handling classes
+# Roadster
 from FunctionalIntentHandlers.Roadster.Handlers import \
 RoadsterOrbitIntentHandler,RoadsterSpeedHandler,         \
-RoadsterLocationIntentHandler,MarsIntentHandler,RoadsterInfoHandler
+RoadsterLocationIntentHandler,RoadsterMarsHandler,RoadsterInfoHandler
 
+# Launches
+from FunctionalIntentHandlers.Launches.Handlers import \
+LaunchesNextHandler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-#from roadster import roadster
-
-
 
 
 class ChangeUnitsIntentHandler(AbstractRequestHandler):
@@ -93,13 +93,16 @@ sb = SkillBuilder()
 sb.add_request_handler(LaunchRequestHandler())
 
 # Roadster Handlers
-sb.add_request_handler(MarsIntentHandler())
+sb.add_request_handler(RoadsterMarsHandler())
 sb.add_request_handler(AssistanceIntentHandler())
 sb.add_request_handler(RoadsterOrbitIntentHandler())
 sb.add_request_handler(RoadsterLocationIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(RoadsterSpeedHandler())
 sb.add_request_handler(RoadsterInfoHandler())
+
+# Launch Handlers
+sb.add_request_handler(LaunchesNextHandler())
 
 
 # Shared Component Handlers

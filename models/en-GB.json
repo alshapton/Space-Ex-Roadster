@@ -55,7 +55,7 @@
           ]
         },
         {
-          "name": "MarsIntent",
+          "name": "RoadsterMars",
           "slots": [],
           "samples": [
             "how close is it to mars",
@@ -105,6 +105,16 @@
             "tell me about the tesla",
             "tell me about the car",
             "tell me about the roadster"
+          ]
+        },
+        {
+          "name": "LaunchNext",
+          "slots": [],
+          "samples": [
+            "what is the next launch",
+            "whats the next launch",
+            "whens the next launch",
+            "When is the next launch"
           ]
         }
       ],
@@ -180,26 +190,28 @@
         {
           "values": [
             {
-              "id": "No",
+              "id": "Extended",
               "name": {
-                "value": "No",
+                "value": "Extended",
                 "synonyms": [
-                  "partial",
-                  "nope",
-                  "No thanks",
+                  "extended"
+                ]
+              }
+            },
+            {
+              "id": "Basic",
+              "name": {
+                "value": "Basic",
+                "synonyms": [
                   "basic"
                 ]
               }
             },
             {
-              "id": "Yes",
+              "id": "Full",
               "name": {
-                "value": "Yes",
+                "value": "Full",
                 "synonyms": [
-                  "extended",
-                  "please",
-                  "yes please",
-                  "yup",
                   "full"
                 ]
               }
@@ -287,19 +299,15 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "would you like basic or full details"
+            "value": "would you like basic, full or extended details ?"
           },
           {
             "type": "PlainText",
-            "value": "Would you like all the roadster information"
-          },
-          {
-            "type": "PlainText",
-            "value": "Do you need full roadster information "
+            "value": "would you like basic, full or extended information ?"
           }
         ]
       }
     ]
   },
-  "version": "15"
+  "version": "18"
 }

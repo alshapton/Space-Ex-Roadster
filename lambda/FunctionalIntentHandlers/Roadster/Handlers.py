@@ -76,7 +76,7 @@ class RoadsterInfoHandler(AbstractRequestHandler):
         
         earth = roadster(1,str(units),"distance")
 
-        if (infolevel.lower() == "yes"): # Long 
+        if ((infolevel.lower() == "full") or (infolevel.lower() == "extended")): # full / extended 
 
             details = roadster(1,"","details")
             norad = roadster(1,"","norad")
@@ -87,12 +87,31 @@ class RoadsterInfoHandler(AbstractRequestHandler):
             
             mars = roadster(1,str(units),"mars")
             
-            speak_output = str(details) + ",, It was launched on " + launchdatetime
+            speak_output = ""
+            #speak_output = speak_output + str(details)
+            speak_output = speak_output + ",, It was launched on " + launchdatetime
             speak_output = speak_output + ",," + weights
             speak_output = speak_output + ",,Its Norad eye dee is " + norad
             speak_output = speak_output + " . It is currently " + earth + " and " + mars
         
-        if (infolevel.lower() == "no"): # Short 
+        if (infolevel.lower() == "extended"): # Extended 
+            
+            apoapsis_au = roadster(1,"","apoapsis_au")
+            periapsis_au = roadster(1,"","periapsis_au")
+            semi_major_axis = roadster(1,"","semi_major_axis")
+            eccentricity = roadster(1,"","eccentricity")
+            inclination = roadster(1,"","inclination")
+            longitude = roadster(1,"","longitude")
+            periapsis = roadster(1,"","periapsis_arg")
+
+
+            speak_output = speak_output + ",,In astronomical units, its apoapsis is " + apoapsis_au
+            speak_output = speak_output + ",its periapsis is " + periapsis_au + ", whilst its semi major axis is " + semi_major_axis
+            speak_output = speak_output + ". It has an orbital eccentricity of " + eccentricity + ", an inclination of " + inclination + " degrees."
+            speak_output = speak_output + "Its periapsis argument is " + periapsis + " degrees."
+            
+
+        if (infolevel.lower() == "basic"): # Basic 
 
             name = roadster(1,"","name")
             launchdatetime=roadster(1,"","launch-short")
@@ -106,11 +125,11 @@ class RoadsterInfoHandler(AbstractRequestHandler):
                 .response
         )
 
-class MarsIntentHandler(AbstractRequestHandler):
+class RoadsterMarsHandler(AbstractRequestHandler):
     """Handler for distance away from Mars of the Roadster Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("MarsIntent")(handler_input)
+        return ask_utils.is_intent_name("RoadsterMars")(handler_input)
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
