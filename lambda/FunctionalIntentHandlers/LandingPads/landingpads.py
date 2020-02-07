@@ -1,9 +1,9 @@
-"""Ships module
+"""Landingpads module
 
 This file is imported as a module and contains the following
 function:
 
-    * ships - returns the requested information about the ships
+    * landingpads - returns the requested information about the available Space/X landing pads
 
 """
 
@@ -15,12 +15,12 @@ import inflect
 
 from utilities import convert_date_to_speech, getJson
 
-def ships(timeOut=1,units="miles",task="distance",parameter="None"):
+def landingpads(timeOut=1,units="miles",task="distance",parameter="None"):
     """
 
     :type timeOut: Optional[int]
 
-    Returns details about the Launches
+    Returns details about the Landing pads available
 
     Parameters
     ----------
@@ -42,17 +42,17 @@ def ships(timeOut=1,units="miles",task="distance",parameter="None"):
     # Get instance of the number to words engine
     p = inflect.engine()
 
-    # Ship Name
+    # landingpad Names
     if (task == "name"):
         
-        result = getJson(timeOut,"ships/" + parameter)
-        R = result['ship_name']
+        result = getJson(timeOut,"landingpads/" + parameter)
+        R = result['full_name']
         
-    if (task == "getDroneShipsList"):
-        result = getJson(timeOut,"ships?role=ASDS%20barge")
+    if (task == "getLandingPadsList"):
+        result = getJson(timeOut,"landingpads")
         R=[]
         for i in result:
-            R.append(i['ship_id'] + ':' + i['ship_name'] )
+            R.append(i)
         
     return R
     

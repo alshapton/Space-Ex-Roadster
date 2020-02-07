@@ -3,45 +3,12 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:609294445642:function:d5aa471d-de4e-4f11-8ea4-486a9184bcc5:Release_1"
+          "uri": "arn:aws:lambda:us-east-1:609294445642:function:d5aa471d-de4e-4f11-8ea4-486a9184bcc5:Release_2"
         },
         "interfaces": [
           {
-            "type": "ALEXA_PRESENTATION_APL",
-            "supportedViewports": [
-              {
-                "mode": "HUB",
-                "shape": "ROUND",
-                "minWidth": 480,
-                "maxWidth": 480,
-                "minHeight": 480,
-                "maxHeight": 480
-              },
-              {
-                "mode": "HUB",
-                "shape": "RECTANGLE",
-                "minWidth": 1024,
-                "maxWidth": 1024,
-                "minHeight": 600,
-                "maxHeight": 600
-              },
-              {
-                "mode": "HUB",
-                "shape": "RECTANGLE",
-                "minWidth": 1280,
-                "maxWidth": 1280,
-                "minHeight": 800,
-                "maxHeight": 800
-              },
-              {
-                "mode": "TV",
-                "shape": "RECTANGLE",
-                "minWidth": 960,
-                "maxWidth": 960,
-                "minHeight": 540,
-                "maxHeight": 540
-              }
-            ]
+            "type": "RENDER_TEMPLATE",
+            "minimumTemplateVersion": "1.0"
           }
         ]
       }
@@ -50,8 +17,8 @@
     "privacyAndCompliance": {
       "locales": {
         "en-GB": {
-          "privacyPolicyUrl": "https://github.com/alshapton/Space-Ex-Roadster/blob/master/Privacy.md",
-          "termsOfUseUrl": "https://github.com/alshapton/Space-Ex-Roadster/blob/master/Terms.md"
+          "privacyPolicyUrl": "https://github.com/alshapton/Space-X-Info-Alexa/blob/master/Privacy.md",
+          "termsOfUseUrl": "https://github.com/alshapton/Space-X-Info-Alexa/blob/master/Terms.md"
         }
       },
       "allowsPurchases": false,
@@ -64,23 +31,23 @@
       "locales": {
         "en-GB": {
           "name": "Space/X Information",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/922f/146471689791467ab940c7cf0c23f554/APP_ICON?versionId=87bcTrmN4l7mLspqizYhzmE8z3NOkFfe&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200129T111919Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200129%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f6efc5dd2df44a10ca32284eb1ee2f610d020f7cd5186bcd2f54469a5a9468fc",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/b982/514a8e034c684ca785697da8903bb39c/APP_ICON_LARGE?versionId=e9ntJ.bEQdVckNRQJmgBRSbPY5q9t2Jm&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200129T111919Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200129%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4e257050981982f59110bece3164685d2866f65fe637f4d0006dd2beaaabb969",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c6b9/849faf85adba4e6fa3a8f05777a48bbd/APP_ICON?versionId=4x9HzSdwy0_86_YxXVdMDskHFzSBL9Qq&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200207T232523Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3697da5bc9047ed810acb34455bf046b7cc6b2c33ff8e2de59a8ba7538e86749",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/69e2/4efe3d0dd1eb4390b87875b4b94d6b9b/APP_ICON_LARGE?versionId=jZi3YDaHhs8Y30qcu8Ji_WrdUz6D2TBE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200207T232523Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f733a8e644e586a902750ee240b6ad418c151b2e891ab5c2fa0bacf8ad3b9fe4",
           "summary": "Find out about Space/X's activities",
-          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun",
+          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun\n* The next launch",
           "examplePhrases": [
             "Alexa open space x info",
             "how far is the roadster from earth",
-            "how far is the roadster from mars"
+            "whens the next launch"
           ],
           "keywords": [
             "Space",
-            "SpacceX",
+            "SpaceX",
             "Roadster",
             "Elon",
             "Musk"
           ],
-          "updatesDescription": "* Added better granular help\n* Added orbit information\n* Added speed information"
+          "updatesDescription": "* Initial support for display devices\n* Split roadster information up into basic, full and extended levels\n* More code modularisation\n* further work on granular help\n* Started to add support for next launch\n* Added some (quiescent) initial ship support"
         }
       },
       "isAvailableWorldwide": false,

@@ -6,6 +6,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput 
 
+from ask_sdk_model import ui
 
 from FunctionalIntentHandlers.Roadster.roadster import roadster
 
@@ -117,13 +118,25 @@ class RoadsterInfoHandler(AbstractRequestHandler):
             launchdatetime=roadster(1,"","launch-short")
             
             speak_output = str(name) + " was launched on " + launchdatetime + " and is currently " + earth
+        # https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg
         
+        card_title   = "Elon Musk's Tesla Roadster"
+        card_text    = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom."
+
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                .set_card(
+                    ui.StandardCard(
+                        title = card_title,
+                        text  = card_text,
+                        image = ui.Image(
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
+                        ))
                 .response
-        )
+                )
 
 class RoadsterMarsHandler(AbstractRequestHandler):
     """Handler for distance away from Mars of the Roadster Intent."""

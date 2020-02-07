@@ -19,7 +19,15 @@ def au_to_mi(au):
 
 def num_to_month(month):
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    return months[month-1]    
+    return months[month-1] 
+
+def get_image(result,data_item=""):
+    IMAGE = ""
+    
+    if (data_item == "None"):
+        return IMAGE 
+    else:
+        return eval("result" + data_item )
 
 def convert_date_to_speech(longlaunchdateutc="No date",fmt="short"):
     p = inflect.engine()

@@ -6,7 +6,13 @@ Use "Alexa, open SpaceX info" to invoke the skill
 
 # Release History
 
-        0.0.3 - ALS -               * Initial support for display devices
+        0.0.4 - ALS -   XX/XX/2020  * Added support for previous launch
+                                    * Added support display device for :
+                                                o Next Launch
+                                                o Previous Launch
+                                    * Added some (quiescent) initial landing pad support
+                                    
+        0.0.3 - ALS -   31/01/2020  * Initial support for display devices
                                     * Split roadster information up into basic, full and extended levels
                                     * More code modularisation
                                     * further work on granular help

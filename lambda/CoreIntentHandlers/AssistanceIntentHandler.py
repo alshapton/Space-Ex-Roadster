@@ -33,6 +33,9 @@ class AssistanceIntentHandler(AbstractRequestHandler):
             SPEECH = "By default, the units of distance are miles,, but you can change that, if you wish,,"
             SPEECH = SPEECH + "To change the units to kilometers, say,, change units to kilometers,,"
             SPEECH = SPEECH + "To change the units to miles, say,, change units to miles"
+            
+        if (str(subject).lower() == "launches"):
+            SPEECH = "To find out when the next launch is, say Whens the next launch?"
 
         return (
             handler_input.response_builder
