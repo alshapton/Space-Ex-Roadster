@@ -45,11 +45,11 @@ def landingpads(timeOut=1,units="miles",task="distance",parameter="None"):
     # landingpad Names
     if (task == "name"):
         
-        result = getJson(timeOut,"landingpads/" + parameter)
+        result = getJson(timeOut,"landpads/" + parameter)
         R = result['full_name']
         
     if (task == "getLandingPadsList"):
-        result = getJson(timeOut,"landingpads")
+        result = getJson(timeOut,"landpads")
         R=[]
         for i in result:
             R.append(i)

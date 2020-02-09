@@ -16,21 +16,24 @@ import requests
 
 from utilities import convert_date_to_speech, num_to_month, get_image
 from FunctionalIntentHandlers.Ships.ships import ships
-
+from FunctionalIntentHandlers.LandingPads.landingpads import landingpads
 
 def cores(result):
     return len(result['rocket']['first_stage']['cores'])
 
 def cores_landed(result):
     R=[]
-    listofships=ships(1,"","getDroneShipsList","")
+    listofpads = json.loads(json.dumps(landingpads(1,"","getLandingPadsList","")))
     for core in result['rocket']['first_stage']['cores']:
-        this_ship = core['landing_vehicle']
+        this_lv = core['landing_vehicle']
         s_name = ''
-        for ship in listofships:
-            shipinfo    = ship.split(":")
-            if (shipinfo[0] == core['landing_vehicle']):
-                s_name   = shipinfo[1]
+        for lv in listofpads:
+            if (lv["id"] == core['landing_vehicle']):
+                if (lv["landing_type"]=="ASDS"):
+                    s_name = " the drone ship "
+                else:
+                    s_name = " at the landing zone "
+                s_name   = s_name + lv["full_name"]
                 
         if (core['land_success']):
             R.append('YES' + ':' + s_name )
@@ -69,12 +72,6 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
     a string in speech format containing details of the information requested
     """
     
-    """ Base URL from which to assemble request URLs """
-    base = "https://api.spacexdata.com"
-
-    """ API Version """
-    version = "v3"
-    root_url = base + "/" + version + "/launches/"
     # Get instance of the number to words engine
     p = inflect.engine()
 
@@ -114,7 +111,7 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
                 core_status   = coreinfo[0]
                 landing_vehicle = coreinfo[1]
                 if (core_status == "YES"):
-                    core_speech = core_speech + "Core " + str(core_count) + " landed successfully on " + coreinfo[1] + "."
+                    core_speech = core_speech + "Core " + str(core_count) + " landed successfully " + coreinfo[1] + "."
                 else:
                     core_speech = core_speech + "Core " + str(core_count) + " did not land on its target of  " + cooreinfo[1] + "."
                 
@@ -123,13 +120,19 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
     if (task == "next-long"):
         
         SPEECH = "The next launch is for the " + result['mission_name'] + " mission, on  " + convert_date_to_speech(result['launch_date_utc'],"long")
-        droneshipslist=ships(1,"","getDroneShipsList","")
+        listofpads = json.loads(json.dumps(landingpads(1,"","getLandingPadsList","")))
+        
         details = result['details']
-        for ship in droneshipslist:
-            shipinfo  = ship.split(":")
-            ship_id   = shipinfo[0]
-            ship_name = shipinfo[1]
-            details   = details.replace(ship_id,"," + ship_name)
+        
+        for lv in listofpads:
+            s_name = ''
+            if (lv["landing_type"]=="ASDS"):
+                s_name = " the drone ship "
+            else:
+                s_name = " the landing zone "
+            s_name   = s_name + lv["full_name"]
+            details   = details.replace(lv["id"],"," + s_name)
+
         SPEECH = SPEECH + ". " + details + ". "
         
         SPEECH=SPEECH + " It'll be launched by a " + rocket(result) + "  rocket,"

@@ -73,5 +73,7 @@ def getJson(timeOut=1,url_segment=""):
 
     result = json.loads(json.dumps(requests.get(url = str(root_url + url_segment),timeout = timeOut).json()))
     return result
-    
 
+def getConfig():
+    with open('config.json') as json_file:
+        return json.load(json_file)

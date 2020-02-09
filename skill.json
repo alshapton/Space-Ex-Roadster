@@ -31,10 +31,10 @@
       "locales": {
         "en-GB": {
           "name": "Space/X Information",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c6b9/849faf85adba4e6fa3a8f05777a48bbd/APP_ICON?versionId=4x9HzSdwy0_86_YxXVdMDskHFzSBL9Qq&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200207T232523Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3697da5bc9047ed810acb34455bf046b7cc6b2c33ff8e2de59a8ba7538e86749",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/69e2/4efe3d0dd1eb4390b87875b4b94d6b9b/APP_ICON_LARGE?versionId=jZi3YDaHhs8Y30qcu8Ji_WrdUz6D2TBE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200207T232523Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f733a8e644e586a902750ee240b6ad418c151b2e891ab5c2fa0bacf8ad3b9fe4",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c6b9/849faf85adba4e6fa3a8f05777a48bbd/APP_ICON?versionId=4x9HzSdwy0_86_YxXVdMDskHFzSBL9Qq&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200209T182325Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=78f91f33d64e2a34cd605ff495dbbd0323e142bd083a57b9557aa2f19a74a7a1",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/69e2/4efe3d0dd1eb4390b87875b4b94d6b9b/APP_ICON_LARGE?versionId=jZi3YDaHhs8Y30qcu8Ji_WrdUz6D2TBE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200209T182325Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200209%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=2e93c5753960ee50136030beb30c7766c5a5c180ebafd988987ffdeb74f08712",
           "summary": "Find out about Space/X's activities",
-          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun\n* The next launch",
+          "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun\n* The next launch\n* The last launch",
           "examplePhrases": [
             "Alexa open space x info",
             "how far is the roadster from earth",
@@ -45,9 +45,12 @@
             "SpaceX",
             "Roadster",
             "Elon",
-            "Musk"
+            "Musk",
+            "launch",
+            "Starlink",
+            "stamen"
           ],
-          "updatesDescription": "* Initial support for display devices\n* Split roadster information up into basic, full and extended levels\n* More code modularisation\n* further work on granular help\n* Started to add support for next launch\n* Added some (quiescent) initial ship support"
+          "updatesDescription": "* Added initial support for previous launch\n                                    * Added landing zones into the speech for where the boosters would/have landed\n                                    * Added support display device for :\n                                                o Next Launch\n                                                o Previous Launch\n                                    * Added some (quiescent) initial landing pad support\n                                    * Added version information to display on initial launch"
         }
       },
       "isAvailableWorldwide": false,

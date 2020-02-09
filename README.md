@@ -6,16 +6,18 @@ Use "Alexa, open SpaceX info" to invoke the skill
 
 # Release History
 
-        0.0.4 - ALS -   XX/XX/2020  * Added support for previous launch
+        0.0.4 - ALS -   08/02/2020  * Added initial support for previous launch
+                                    * Added landing zones into the speech for where the boosters would/have landed
                                     * Added support display device for :
                                                 o Next Launch
                                                 o Previous Launch
                                     * Added some (quiescent) initial landing pad support
+                                    * Added version information to display on initial launch
                                     
         0.0.3 - ALS -   31/01/2020  * Initial support for display devices
                                     * Split roadster information up into basic, full and extended levels
                                     * More code modularisation
-                                    * further work on granular help
+                                    * Further work on granular help
                                     * Started to add support for next launch
                                     * Added some (quiescent) initial ship support
         

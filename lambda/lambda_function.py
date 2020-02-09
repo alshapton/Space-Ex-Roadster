@@ -119,7 +119,6 @@ sb.add_exception_handler(CatchAllExceptionHandler())
 sb.add_request_handler(IntentReflectorHandler()) # This MUST be last so it doesn't override the custom intent handlers
 
 
-
 lambda_handler = sb.lambda_handler()
 
 
