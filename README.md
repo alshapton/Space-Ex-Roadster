@@ -1,4 +1,14 @@
-# Space/X Information
+# Space/X Info
+
+<div align="center">
+<p align="center">
+<img src="https://github.com/alshapton/Space-X-Info-Alexa/master/alexarocket.png" width="30%" height="30%">
+
+## Simple and Easy API Wrapper for [r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
+
+
+</p>
+</div>
 
 # Invocation
 
@@ -27,3 +37,13 @@ Use "Alexa, open SpaceX info" to invoke the skill
                                     * Renamed from "Roadster in Space" to "Space/X Information"
 
         0.0.1 - ALS -   12/01/2020  * Initial release - distance only
+
+
+### Credits
+Jake Meyer's [r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
+
+
+
+
+
+
