@@ -2,7 +2,7 @@
 
 <div align="center">
 <p align="center">
-<img src="https://github.com/alshapton/Space-X-Info-Alexa/master/alexarocket.png" width="30%" height="30%">
+<img src="https://github.com/alshapton/Space-X-Info-Alexa/master/blob/alexarocket.png" width="30%" height="30%">
 
 ## Simple and Easy API Wrapper for [r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
 
