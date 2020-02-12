@@ -4,6 +4,9 @@ This file is imported as a module and contains the following
 function:
 
     * landingpads - returns the requested information about the available Space/X landing pads
+    
+        task == "name"                  - returns the name of the landingpad given the id
+        task == "getLandingPadsList"    - returns a list of landing pads with all their information as an array of JSON documents
 
 """
 
@@ -15,7 +18,7 @@ import inflect
 
 from utilities import convert_date_to_speech, getJson
 
-def landingpads(timeOut=1,units="miles",task="distance",parameter="None"):
+def landingpads(timeOut=1,units="miles",task="name",parameter="None"):
     """
 
     :type timeOut: Optional[int]

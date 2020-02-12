@@ -1,4 +1,5 @@
 {
+    "comment":"Configuration data for the Alexa Space/X Info skill",
     "release_info":{
         "version":"0.0.5",
         "release_date":"XX-XX-2020"

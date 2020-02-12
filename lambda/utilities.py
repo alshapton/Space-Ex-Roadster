@@ -1,3 +1,19 @@
+"""utilities module
+
+This file is imported as a module and exposes the following
+functions:
+
+    * km_to_au      - converts kilometers to AU
+    * mi_to_au      - converts miles to AU
+    * au_to_km      - converts AU to kilometers 
+    * au_to_mi      - converts AU to miles
+    * num_to_month  - converts a month number into the text equivalent
+    * get_image     - returns the specified image from the JSON result
+    * convert_date_to_speech - Takes a date and converts it into a long or short version ready for speech
+    * getJson       - takes a REST endpoint and returns the result (respecting any parameters) as a JSON payload    
+    * getConfig     - reads the configuration file as a JSON payload
+    
+"""
 import inflect
 import requests
 import json

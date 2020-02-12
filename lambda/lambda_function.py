@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import boto3
+
 import logging
 import ask_sdk_core.utils as ask_utils
 
@@ -8,6 +10,8 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input       import HandlerInput
 
+
+# UI components
 from ask_sdk_model import Response
 
 # Import core intent handling classes
@@ -31,8 +35,13 @@ RoadsterInfoHandler
 from FunctionalIntentHandlers.Launches.Handlers import \
 LaunchesNextHandler,LaunchesLastHandler
 
+#from ask_sdk.standard import StandardSkillBuilder
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+
 
 
 class ChangeUnitsIntentHandler(AbstractRequestHandler):
@@ -47,6 +56,7 @@ class ChangeUnitsIntentHandler(AbstractRequestHandler):
         units = slots['units'].value
         speak_output = "Your units are now," + str(units)
         handler_input.attributes_manager.session_attributes["Units"] = str(units)
+        
         return (
             handler_input.response_builder
                 .speak(speak_output)
@@ -76,7 +86,7 @@ class HelpIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "You can find out about Elon Musks roadster,by saying,, help me with,, and a specific area, such as roadster, units or launches"
+        speak_output = "You can find out about Elon Musks roadster,by saying,, help me with,, and a specific area,, such as roadster, units or launches"
 
         return (
             handler_input.response_builder
