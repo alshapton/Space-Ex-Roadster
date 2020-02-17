@@ -3,5 +3,17 @@
     "release_info":{
         "version":"0.0.5",
         "release_date":"XX-XX-2020"
+    },
+    "i8n":{
+        "lang":[
+            {
+                "key":"en-GB",
+                "Welcome":"Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way." 
+            },
+            {
+                "key":"en-US",
+                "Welcome":"Hi there, I can tell you all about space ex. say Help for more information about what you can ask me to do. By the way, remember that I am not connected to space ex in any way." 
+            }
+        ]
     }
 }

@@ -10,6 +10,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input       import HandlerInput
 
+import pytz
 
 # UI components
 from ask_sdk_model import Response
@@ -19,10 +20,10 @@ from CoreIntentHandlers.LaunchRequestHandler      import LaunchRequestHandler
 from CoreIntentHandlers.CancelOrStopIntentHandler import CancelOrStopIntentHandler
 from CoreIntentHandlers.CatchAllExceptionHandler  import CatchAllExceptionHandler
 from CoreIntentHandlers.IntentReflectorHandler    import IntentReflectorHandler
+from CoreIntentHandlers.HelpIntentHandler         import HelpIntentHandler
 
 # Granular Help Handler
 from CoreIntentHandlers.AssistanceIntentHandler import AssistanceIntentHandler
-
 
 # Import functional intent handling classes
 # Roadster
@@ -35,13 +36,9 @@ RoadsterInfoHandler
 from FunctionalIntentHandlers.Launches.Handlers import \
 LaunchesNextHandler,LaunchesLastHandler
 
-#from ask_sdk.standard import StandardSkillBuilder
-
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-
 
 
 class ChangeUnitsIntentHandler(AbstractRequestHandler):
@@ -52,11 +49,13 @@ class ChangeUnitsIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
+          
+
         slots = handler_input.request_envelope.request.intent.slots
         units = slots['units'].value
-        speak_output = "Your units are now," + str(units)
+        speak_output = "Your units are now," + str(units) + " "
         handler_input.attributes_manager.session_attributes["Units"] = str(units)
-        
+
         return (
             handler_input.response_builder
                 .speak(speak_output)
@@ -77,23 +76,6 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
         # Any cleanup logic goes here.
 
         return handler_input.response_builder.response
-
-class HelpIntentHandler(AbstractRequestHandler):
-    """Handler for Help Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("AMAZON.HelpIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        speak_output = "You can find out about Elon Musks roadster,by saying,, help me with,, and a specific area,, such as roadster, units or launches"
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .ask(speak_output)
-                .response
-        )
 
 # The SkillBuilder object acts as the entry point for the skill, routing all request and response
 # payloads to the handlers above. 
@@ -128,10 +110,8 @@ sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_exception_handler(CatchAllExceptionHandler())
 sb.add_request_handler(IntentReflectorHandler()) # This MUST be last so it doesn't override the custom intent handlers
 
-
 lambda_handler = sb.lambda_handler()
 
-
-
-
 # End of Lambda Function
+
+

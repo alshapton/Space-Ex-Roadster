@@ -14,7 +14,7 @@ import inflect
 import json
 import requests
 
-from utilities import convert_date_to_speech, num_to_month, get_image
+from utilities import convert_date_to_speech, num_to_month, get_image,UTC_to_local
 from FunctionalIntentHandlers.Ships.ships import ships
 from FunctionalIntentHandlers.LandingPads.landingpads import landingpads
 
@@ -55,7 +55,7 @@ def core_reuse(result):
 def rocket(result):
     return result['rocket']['rocket_name']
 
-def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
+def launches(result="",timeOut=1,units="miles",task="none",parameter="none",tz="none"):
     """
 
     :type timeOut: Optional[int]
@@ -79,7 +79,7 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
     # Previous Launch
     if (task == "last-long"):
         
-        SPEECH = "The last launch was for the " + result['mission_name'] + " mission, on  " + convert_date_to_speech(result['launch_date_utc'],"long") + "."
+        SPEECH = "The last launch was for the " + result['mission_name'] + " mission, on  " + convert_date_to_speech(UTC_to_local(result['launch_date_utc'],tz),"long",tz) + "."
         droneshipslist=ships(1,"","getDroneShipsList","")
         
         SPEECH=SPEECH + " It was launched by a " + rocket(result) + "  rocket,"
@@ -113,28 +113,29 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
                 if (core_status == "YES"):
                     core_speech = core_speech + "Core " + str(core_count) + " landed successfully " + coreinfo[1] + "."
                 else:
-                    core_speech = core_speech + "Core " + str(core_count) + " did not land on its target of  " + cooreinfo[1] + "."
+                    core_speech = core_speech + "Core " + str(core_count) + " did not land on its target of  " + coreinfo[1] + "."
                 
         RET = SPEECH + core_speech
         
     if (task == "next-long"):
         
-        SPEECH = "The next launch is for the " + result['mission_name'] + " mission, on  " + convert_date_to_speech(result['launch_date_utc'],"long")
-        listofpads = json.loads(json.dumps(landingpads(1,"","getLandingPadsList","")))
+        SPEECH = "The next launch is for the " + result['mission_name'] + " mission, on  " + convert_date_to_speech(UTC_to_local(result['launch_date_utc'],tz),"long")
+        
         
         details = result['details']
-        
-        for lv in listofpads:
-            s_name = ''
-            if (lv["landing_type"]=="ASDS"):
-                s_name = " the drone ship "
-            else:
-                s_name = " the landing zone "
-            s_name   = s_name + lv["full_name"]
-            details   = details.replace(lv["id"],"," + s_name)
+        if details is not None:
+            listofpads = json.loads(json.dumps(landingpads(1,"","getLandingPadsList","")))
+            for lv in listofpads:
+                s_name = ''
+                if (lv["landing_type"]=="ASDS"):
+                    s_name = " the drone ship "
+                else:
+                    s_name = " the landing zone "
+                s_name   = s_name + lv["full_name"]
+                details   = details.replace(lv["id"],"," + s_name)
 
-        SPEECH = SPEECH + ". " + details + ". "
-        
+            SPEECH = SPEECH + ". " + details + ". "
+            
         SPEECH=SPEECH + " It'll be launched by a " + rocket(result) + "  rocket,"
         
         core_speech =  " and will have " 
@@ -159,14 +160,20 @@ def launches(result="",timeOut=1,units="miles",task="none",parameter="none"):
         if (parameter == "speech"):
             RET = convert_date_to_speech(result['launch_date_utc'],"short")
         if (parameter == "text"):
-            longlaunchdateutc = result['launch_date_utc']
+            longlaunchdateutc = str(UTC_to_local(result['launch_date_utc'],tz))
+            
             launchyear  = longlaunchdateutc[0:4]
             launchmonth = num_to_month(int(longlaunchdateutc[6:7]))
             launchday   = p.ordinal(int(longlaunchdateutc[8:10]))
             launchhour  = longlaunchdateutc[11:13]
             launchmin  =  longlaunchdateutc[14:16]
 
-            RET = launchday + " of " + launchmonth + " " + launchyear + " at " + launchhour + ":" + launchmin + " UTC"
+            RET = launchday + " of " + launchmonth + " " + launchyear + " at " + launchhour + ":" + launchmin 
+            
+            if (tz == "UTC" ):
+                RET = RET + " UTC"
+            else:
+                RET = RET + " local time"
         
     # retrieve launch images
     if (task == "image"):

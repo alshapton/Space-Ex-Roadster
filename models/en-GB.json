@@ -109,8 +109,14 @@
         },
         {
           "name": "LaunchNext",
-          "slots": [],
+          "slots": [
+            {
+              "name": "TimeZone",
+              "type": "TimeZoneType"
+            }
+          ],
           "samples": [
+            "sxi {TimeZone} sxi ln",
             "what is the next launch",
             "whats the next launch",
             "whens the next launch",
@@ -159,8 +165,14 @@
         },
         {
           "name": "LaunchLast",
-          "slots": [],
+          "slots": [
+            {
+              "name": "TimeZone",
+              "type": "TimeZoneType"
+            }
+          ],
           "samples": [
+            "sxi {TimeZone} sxi ll",
             "tell me about the most recent launch",
             "tell me about the last launch",
             "when was the most recent launch",
@@ -270,6 +282,17 @@
             }
           ],
           "name": "RoadsterInfoType"
+        },
+        {
+          "values": [
+            {
+              "id": "UNDEFINED",
+              "name": {
+                "value": "Undefined"
+              }
+            }
+          ],
+          "name": "TimeZoneType"
         }
       ]
     },
@@ -361,5 +384,5 @@
       }
     ]
   },
-  "version": "23"
+  "version": "31"
 }

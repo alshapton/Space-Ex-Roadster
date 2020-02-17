@@ -38,6 +38,14 @@ class RoadsterOrbitIntentHandler(AbstractRequestHandler):
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                .set_card(
+                    ui.StandardCard(
+                        title = "Elon Musk's Tesla Roadster",
+                        text  = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom.",
+                        image = ui.Image(
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
+                        ))
                 .response
         )
 
@@ -55,6 +63,14 @@ class RoadsterSpeedHandler(AbstractRequestHandler):
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                .set_card(
+                    ui.StandardCard(
+                        title = "Elon Musk's Tesla Roadster",
+                        text  = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom.",
+                        image = ui.Image(
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
+                        ))
                 .response
         )
     
@@ -73,6 +89,14 @@ class RoadsterLocationIntentHandler(AbstractRequestHandler):
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                .set_card(
+                    ui.StandardCard(
+                        title = "Elon Musk's Tesla Roadster",
+                        text  = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom.",
+                        image = ui.Image(
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
+                        ))
                 .response
         )
 
@@ -132,9 +156,6 @@ class RoadsterInfoHandler(AbstractRequestHandler):
             
             speak_output = str(name) + " was launched on " + launchdatetime + " and is currently " + earth
         # https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg
-        
-        card_title   = "Elon Musk's Tesla Roadster"
-        card_text    = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom."
 
         return (
             handler_input.response_builder
@@ -142,8 +163,8 @@ class RoadsterInfoHandler(AbstractRequestHandler):
                 .ask(speak_output)
                 .set_card(
                     ui.StandardCard(
-                        title = card_title,
-                        text  = card_text,
+                        title = "Elon Musk's Tesla Roadster",
+                        text  = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom.",
                         image = ui.Image(
                             "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
                             "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
@@ -166,5 +187,13 @@ class RoadsterMarsHandler(AbstractRequestHandler):
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                .set_card(
+                    ui.StandardCard(
+                        title = "Elon Musk's Tesla Roadster",
+                        text  = "The Roadster, picture with Earth in background. 'Spaceman' mannequin wearing SpaceX Spacesuit in driving seat. The camera is mounted on an external boom.",
+                        image = ui.Image(
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg",
+                            "https://upload.wikimedia.org/wikipedia/commons/2/20/Elon_Musk%27s_Tesla_Roadster_%2840110304192%29.jpg")
+                        ))
                 .response
         )

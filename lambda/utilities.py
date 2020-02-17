@@ -12,11 +12,18 @@ functions:
     * convert_date_to_speech - Takes a date and converts it into a long or short version ready for speech
     * getJson       - takes a REST endpoint and returns the result (respecting any parameters) as a JSON payload    
     * getConfig     - reads the configuration file as a JSON payload
+    * UTC_to_local  - converts a UTC time to a time in the user's timezone
+    * getTimezone   - gets the user's device timezone (or defaults to UTC) and stores it in a session slot
     
 """
 import inflect
 import requests
 import json
+
+# Calculating timezone-specific times from UTC
+import pytz
+from datetime import datetime
+import tzlocal 
 
 AU_KM = 149597871
 AU_MI = 92955807
@@ -45,12 +52,13 @@ def get_image(result,data_item=""):
     else:
         return eval("result" + data_item )
 
-def convert_date_to_speech(longlaunchdateutc="No date",fmt="short"):
+def convert_date_to_speech(longlaunchdateutc="No date",fmt="short",tz=""):
     p = inflect.engine()
+    
+    longlaunchdateutc=UTC_to_local(longlaunchdateutc,tz)
     
     if (longlaunchdateutc == "No date"):
         return longlaunchdateutc
-    # 2018-02-06T20:45:00.000Z
 
     launchyear  = p.number_to_words(int(longlaunchdateutc[0:4]))
     launchmonth = num_to_month(int(longlaunchdateutc[6:7]))
@@ -65,8 +73,11 @@ def convert_date_to_speech(longlaunchdateutc="No date",fmt="short"):
         launchmin = "oh " + launchmin
     
     launchsec   = p.number_to_words(longlaunchdateutc[17:18])
-    launchtz    = "You Tee See"
-    
+    if (tz == "UTC"):
+        launchtz    = "You Tee See"
+    else:
+        launchtz    = "local time"   
+        
     if (fmt == "long"):
         # Long stuff 
         launchdatetime = launchday + " of " + launchmonth + " " + launchyear + " at " + launchhour + " " + launchmin + " hours and " + launchsec + " seconds " + launchtz
@@ -90,6 +101,54 @@ def getJson(timeOut=1,url_segment=""):
     result = json.loads(json.dumps(requests.get(url = str(root_url + url_segment),timeout = timeOut).json()))
     return result
 
+def getTimezone(handler_input):
+    
+    try:
+        userTimeZone = handler_input.attributes_manager.session_attributes["TimeZone"]
+    except Exception:
+        userTimeZone = "UNDEFINED"
+    
+    if (userTimeZone == "UNDEFINED"):
+        # get device id
+        sys_object = handler_input.request_envelope.context.system
+        device_id = sys_object.device.device_id
+        
+        # get Alexa Settings API information
+        api_endpoint = sys_object.api_endpoint
+        api_access_token = sys_object.api_access_token
+        
+        # construct systems api timezone url
+        url = '{api_endpoint}/v2/devices/{device_id}/settings/System.timeZone'.format(api_endpoint=api_endpoint, device_id=device_id)
+        headers = {'Authorization': 'Bearer ' + api_access_token}
+        
+        userTimeZone = ""
+        try:
+            r = requests.get(url, headers=headers)
+            res = r.json()
+            #logger.info("Device API result: {}".format(str(res)))
+            userTimeZone = str(res)
+        except Exception:
+            userTimeZone="UTC"
+        
+    return userTimeZone
+
 def getConfig():
     with open('config.json') as json_file:
         return json.load(json_file)
+
+def UTC_to_local(t,userTimeZone):
+    # format of t is 2010-12-08T15:43:00.000Z
+    
+    if (t == ""):
+        return "unknown time"
+    if (userTimeZone == "" or userTimeZone == "UTC" ):
+        return str(t) + "UTC"
+    
+    utc=datetime.strptime(t,'%Y-%m-%dT%H:%M:%S.000Z')
+    utc_timezone = pytz.timezone("UTC")
+
+    # returns datetime in the new timezone
+    local_time = utc_timezone.localize(utc).astimezone(pytz.timezone(userTimeZone)) 
+
+    return local_time
+    

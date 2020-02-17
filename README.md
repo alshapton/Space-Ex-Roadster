@@ -15,7 +15,7 @@ Use "Alexa, open SpaceX info" to invoke the skill
 
 # Release History
 
-        0.0.5 - ALS -   XX/XX/2020  *  
+        0.0.5 - ALS -               * Added initial support for local timezones for launches etc 
 
         0.0.4 - ALS -   08/02/2020  * Added initial support for previous launch
                                     * Added landing zones into the speech for where the boosters would/have landed

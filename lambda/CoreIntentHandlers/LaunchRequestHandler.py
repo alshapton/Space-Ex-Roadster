@@ -19,6 +19,8 @@ from ask_sdk_model import ui
 from utilities import getConfig
 
 import json
+import requests
+import boto3
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for Skill Launch."""
@@ -29,15 +31,15 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way."
-        session_attr = handler_input.attributes_manager.session_attributes
+
+        speak_output = "Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way." 
+        
         result = getConfig()
         VERSION=result["release_info"]["version"]
-        
-        handler_input.attributes_manager.session_attributes["Units"] = "Miles"
-        
         card_title   = "Space/X Info"
-        card_text    = "Information about Space/X's activities.\nNote that this Alexa skill is not affiliated with Space/X in ANY way.\n\nVersion " +  VERSION
+        
+        card_text    = "Information about Space/X's activities.\nNote that this Alexa skill is not affiliated with Space/X in ANY way.\n\nVersion " +  VERSION 
+
 
         return (
             handler_input.response_builder

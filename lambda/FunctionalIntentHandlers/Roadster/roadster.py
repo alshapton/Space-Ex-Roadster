@@ -40,14 +40,8 @@ def roadster(timeOut=1,units="miles",task="distance"):
     a string in speech format containing details of the Tesla Model 3
         Roadster, including position, speed etc
     """
-    
-    """ Base URL from which to assemble request URLs """
-    base = "https://api.spacexdata.com"
 
-    """ API Version """
-    version = "v3"
-    roadster_url = base + "/" + version + "/roadster"
-    result = json.loads(json.dumps(requests.get(url = str(roadster_url),timeout = timeOut).json()))
+    result = getJson(1,"roadster")
     SPEECH = "Sorry, I couldnt understand what you need me to do, maybe you could try again?"
     # Get instance of the number to words engine
     p = inflect.engine()

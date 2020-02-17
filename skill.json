@@ -29,10 +29,13 @@
     },
     "publishingInformation": {
       "locales": {
+        "en-US": {
+          "name": "Space/X Information"
+        },
         "en-GB": {
           "name": "Space/X Information",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c6b9/849faf85adba4e6fa3a8f05777a48bbd/APP_ICON?versionId=4x9HzSdwy0_86_YxXVdMDskHFzSBL9Qq&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200212T113204Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cd1d60ee23a635b4a6d0620631b16aa90117365699f81a050191a99f01d09aa3",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/69e2/4efe3d0dd1eb4390b87875b4b94d6b9b/APP_ICON_LARGE?versionId=jZi3YDaHhs8Y30qcu8Ji_WrdUz6D2TBE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200212T113204Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=af94f22b80352dd0e00cbc93c7afbf822b9a37ddc2433e3aad8ccdba6f1b7500",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c6b9/849faf85adba4e6fa3a8f05777a48bbd/APP_ICON?versionId=4x9HzSdwy0_86_YxXVdMDskHFzSBL9Qq&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200217T230128Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5067c588554ffe1d527845f090f079b6184d5af080d2c41bfd2cc9f73d05711f",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/69e2/4efe3d0dd1eb4390b87875b4b94d6b9b/APP_ICON_LARGE?versionId=jZi3YDaHhs8Y30qcu8Ji_WrdUz6D2TBE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200217T230128Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20200217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7a8ad1acf47959af297f99cffd2a16d5a1ba4325a31348a864eb02f1acf0ba99",
           "summary": "Find out about Space/X's activities",
           "description": "This Amazon Alexa Skill will allow you to easily and quickly find the information you want about some of Space/X and its' activities. You can find out about: \n* Elon Musk's Tesla Roadster in orbit around the Sun\n* The next launch\n* The last launch",
           "examplePhrases": [
@@ -49,8 +52,7 @@
             "launch",
             "Starlink",
             "stamen"
-          ],
-          "updatesDescription": "* Added initial support for previous launch\n                                    * Added landing zones into the speech for where the boosters would/have landed\n                                    * Added support display device for :\n                                                o Next Launch\n                                                o Previous Launch\n                                    * Added some (quiescent) initial landing pad support\n                                    * Added version information to display on initial launch"
+          ]
         }
       },
       "isAvailableWorldwide": false,

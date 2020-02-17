@@ -1,6 +1,6 @@
 """Handlers for Launches 
 
-This file is used to driver the handlers for the following intents:
+This file is used to drive the handlers for the following intents:
 
     Intent          Handler
     ======          =======
@@ -12,14 +12,14 @@ This file is used to driver the handlers for the following intents:
 import ask_sdk_core.utils as ask_utils
 
 from ask_sdk_core.skill_builder import SkillBuilder
-from ask_sdk_core.dispatch_components import AbstractRequestHandler
+from ask_sdk_core.dispatch_components import AbstractRequestHandler 
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput 
 
 from ask_sdk_model import ui
 
 from FunctionalIntentHandlers.Launches.launches import launches
-from utilities import getJson
+from utilities import getJson, getTimezone
 
 
 class LaunchesNextHandler(AbstractRequestHandler):
@@ -31,10 +31,14 @@ class LaunchesNextHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         result = getJson(1,"launches/next")
-
-        speak_output = launches(result,1,"","next-long","")
+        
+        userTimeZone = getTimezone(handler_input)
+        handler_input.attributes_manager.session_attributes["TimeZone"] = str(userTimeZone)
+        
+        speak_output = launches(result,1,"","next-long","",userTimeZone)
+        
         card_title   = "Next Space/X Launch"
-        card_text    = "The next launch is on " + launches(result,1,"","next-date-short","text") + "."
+        card_text    = "The next launch is on " + launches(result,1,"","next-date-short","text",userTimeZone) + "."
         
         return (
             handler_input.response_builder
@@ -60,10 +64,13 @@ class LaunchesLastHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         result = getJson(1,"launches/latest")
-                
-        speak_output = launches(result,1,"","last-long","")
+
+        userTimeZone = getTimezone(handler_input)
+        handler_input.attributes_manager.session_attributes["TimeZone"] = str(userTimeZone)
+        
+        speak_output = launches(result,1,"","last-long","",userTimeZone)
         card_title   = "Most recent Space/X Launch"
-        card_text    = "The most recent launch was on " + launches(result,1,"","next-date-short","text") + "."
+        card_text    = "The most recent launch was on " + launches(result,1,"","next-date-short","text",userTimeZone) + "."
         
         return (
             handler_input.response_builder
