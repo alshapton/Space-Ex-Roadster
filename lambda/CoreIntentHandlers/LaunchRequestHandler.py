@@ -16,7 +16,7 @@ from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput 
 
 from ask_sdk_model import ui
-from utilities import getConfig
+from utilities import getConfig, get_locale
 
 import json
 import requests
@@ -31,15 +31,21 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-
-        speak_output = "Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way." 
-        
+           
         result = getConfig()
-        VERSION=result["release_info"]["version"]
-        card_title   = "Space/X Info"
+        VERSION      = result["release_info"]["version"]
+        locale=get_locale(handler_input)
         
-        card_text    = "Information about Space/X's activities.\nNote that this Alexa skill is not affiliated with Space/X in ANY way.\n\nVersion " +  VERSION 
-
+        langindex=0
+        lang=0
+        for language in result['i8n']['languages']:
+            if language['language'] == locale:
+                lang=langindex
+            langindex = langindex+1    
+        
+        speak_output = result['i8n']['languages'][lang]['settings']['Welcome_speech']
+        card_text    = result['i8n']['languages'][lang]['settings']['Welcome_card_text'] + VERSION
+        card_title   = result["release_info"]["skill_name"]
 
         return (
             handler_input.response_builder

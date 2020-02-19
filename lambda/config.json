@@ -1,19 +1,32 @@
 {
     "comment":"Configuration data for the Alexa Space/X Info skill",
     "release_info":{
+        "skill_name":"Space/X Info",
         "version":"0.0.5",
         "release_date":"XX-XX-2020"
     },
+    "landingzonesign":"https://en.wikipedia.org/wiki/Landing_Zones_1_and_2#/media/File:Landing_Zone_1_(23787738692).jpg",
     "i8n":{
-        "lang":[
+        "languages":[
             {
-                "key":"en-GB",
-                "Welcome":"Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way." 
+                "language":"en-GB",
+                "settings":
+                                {
+                                "Welcome_speech":"Welcome, I can tell you about space ex. say Help for more information about what you can ask me to do. Note that I am not affiliated with space ex in any way.", 
+                                "Welcome_card_text":"Information about Space/X's activities.\nNote that this Alexa skill is not affiliated with Space/X in ANY way.\n\nVersion "
+                                }
+                            
+                
             },
             {
-                "key":"en-US",
-                "Welcome":"Hi there, I can tell you all about space ex. say Help for more information about what you can ask me to do. By the way, remember that I am not connected to space ex in any way." 
+                "language":"en-US",
+                "settings":
+                                {
+                                "Welcome_speech":"Hi there, I can tell you all about space ex. say Help for more information about what you can ask me to do. By the way, remember that I am not connected to space ex in any way." ,                                 
+                                "Welcome_card_text":"Information about Space/X's activities.\nNote that this Alexa skill is not affiliated with Space/X in ANY way.\n\nVersion "
+                               }
+                            
             }
-        ]
+            ]   
     }
 }

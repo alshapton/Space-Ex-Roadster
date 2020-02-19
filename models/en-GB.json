@@ -180,6 +180,19 @@
             "what was the last launch",
             "When was the last launch"
           ]
+        },
+        {
+          "name": "LandingPads",
+          "slots": [
+            {
+              "name": "LandingArea",
+              "type": "LandingAreaType"
+            }
+          ],
+          "samples": [
+            "tell me about the {LandingArea}",
+            "tell me about the landing areas"
+          ]
         }
       ],
       "types": [
@@ -293,6 +306,35 @@
             }
           ],
           "name": "TimeZoneType"
+        },
+        {
+          "values": [
+            {
+              "id": "RTLS",
+              "name": {
+                "value": "Landing pads",
+                "synonyms": [
+                  "RTLS",
+                  "landing zones",
+                  "landing zone",
+                  "landing pads"
+                ]
+              }
+            },
+            {
+              "id": "ASDS",
+              "name": {
+                "value": "Drone Ships",
+                "synonyms": [
+                  "ASDS",
+                  "autonomous drone ships",
+                  "Drones",
+                  "Landing Ships"
+                ]
+              }
+            }
+          ],
+          "name": "LandingAreaType"
         }
       ]
     },
@@ -384,5 +426,5 @@
       }
     ]
   },
-  "version": "31"
+  "version": "39"
 }

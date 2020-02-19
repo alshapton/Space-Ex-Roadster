@@ -14,11 +14,13 @@ functions:
     * getConfig     - reads the configuration file as a JSON payload
     * UTC_to_local  - converts a UTC time to a time in the user's timezone
     * getTimezone   - gets the user's device timezone (or defaults to UTC) and stores it in a session slot
+    * get_locale    - gets the users's locale
     
 """
 import inflect
 import requests
 import json
+from ask_sdk_model.intent_request import IntentRequest
 
 # Calculating timezone-specific times from UTC
 import pytz
@@ -136,6 +138,7 @@ def getConfig():
     with open('config.json') as json_file:
         return json.load(json_file)
 
+
 def UTC_to_local(t,userTimeZone):
     # format of t is 2010-12-08T15:43:00.000Z
     
@@ -149,6 +152,10 @@ def UTC_to_local(t,userTimeZone):
 
     # returns datetime in the new timezone
     local_time = utc_timezone.localize(utc).astimezone(pytz.timezone(userTimeZone)) 
-
     return local_time
+
+def get_locale(handler_input):
+    # type: (HandlerInput) -> AnyStr
+    #Return locale value from input request.
+    return handler_input.request_envelope.request.locale
     

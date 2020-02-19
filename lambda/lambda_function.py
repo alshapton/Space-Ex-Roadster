@@ -25,6 +25,9 @@ from CoreIntentHandlers.HelpIntentHandler         import HelpIntentHandler
 # Granular Help Handler
 from CoreIntentHandlers.AssistanceIntentHandler import AssistanceIntentHandler
 
+# Shared Handlers
+from FunctionalIntentHandlers.Shared.Handlers import ChangeUnitsIntentHandler
+
 # Import functional intent handling classes
 # Roadster
 from FunctionalIntentHandlers.Roadster.Handlers import   \
@@ -36,33 +39,13 @@ RoadsterInfoHandler
 from FunctionalIntentHandlers.Launches.Handlers import \
 LaunchesNextHandler,LaunchesLastHandler
 
+# Landing Pads
+from FunctionalIntentHandlers.LandingPads.Handlers import LandingPadsHandler
+
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-
-class ChangeUnitsIntentHandler(AbstractRequestHandler):
-    """Handler for Change units Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("ChangeUnitsIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-          
-
-        slots = handler_input.request_envelope.request.intent.slots
-        units = slots['units'].value
-        speak_output = "Your units are now," + str(units) + " "
-        handler_input.attributes_manager.session_attributes["Units"] = str(units)
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .ask(speak_output)
-                .response
-        )
-
 
 class SessionEndedRequestHandler(AbstractRequestHandler):
     """Handler for Session End."""
@@ -105,6 +88,8 @@ sb.add_request_handler(ChangeUnitsIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 
+# Landing Pads Handlers
+sb.add_request_handler(LandingPadsHandler())
 
 # Exception Handler to deal with mop up
 sb.add_exception_handler(CatchAllExceptionHandler())

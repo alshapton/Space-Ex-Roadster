@@ -18,8 +18,7 @@ class AssistanceIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         slots = handler_input.request_envelope.request.intent.slots
         subject = slots['assistanceSubject'].value
-        #handler_input.attributes_manager.session_attributes["assistanceSubject"] = str(subject)
-        
+         
         SPEECH = str(subject)
         if (subject is None):
             SPEECH = "Please tell me what you want help with,, roadster, launches or units"
