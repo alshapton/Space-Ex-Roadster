@@ -335,6 +335,16 @@
             }
           ],
           "name": "LandingAreaType"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "N/A"
+              }
+            }
+          ],
+          "name": "LandingZoneList"
         }
       ]
     },
@@ -426,5 +436,5 @@
       }
     ]
   },
-  "version": "39"
+  "version": "41"
 }
