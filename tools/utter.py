@@ -32,22 +32,21 @@ for intent in  intents:
 			continue
 		
 		print ("\n")
-		print (intent["name"])
 		
 		if (cintents[intent["name"]]):
-			print(cintents[intent["name"]])
+			print(cintents[intent["name"]] + "\n")
 		for sample in intent["samples"]:
 			# Flag any "space ex" occurrances
 			if ("space ex" not in sample.lower()):
 				pass
 			else:
-				print("*\t" + sample)
+				print("*\t" + sample + "\n")
 				continue
 			# Flag any "sxi" occurrences
 			if ("sxi" not in sample.lower()):
 				pass
 			else:
-				print("+\t" + sample)
+				print("+\t" + sample + "\n")
 				continue
 				
-			print("\t" + sample)
+			print("\t" + sample + "\n")

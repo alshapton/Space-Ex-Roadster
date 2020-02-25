@@ -24,10 +24,10 @@ from CoreIntentHandlers.HelpIntentHandler           import HelpIntentHandler    
 from CoreIntentHandlers.SessionEndedRequestHandler  import SessionEndedRequestHandler #@ <BLANK>
 
 # Granular Help Handler
-from CoreIntentHandlers.AssistanceIntentHandler import AssistHandler                  #@ <BLANK>
+from CoreIntentHandlers.AssistanceIntentHandler import AssistHandler                  #@ Get mode detailled help
 
 # Shared Handlers
-from FunctionalIntentHandlers.Shared.Handlers import ChangeUnitsHandler               #@ <BLANK>
+from FunctionalIntentHandlers.Shared.Handlers import ChangeUnitsHandler               #@ Swap units of measure (Miles/Km)
 
 # Import functional intent handling classes
 # Roadster
@@ -43,10 +43,10 @@ from FunctionalIntentHandlers.Launches.Handlers import LaunchNextHandler        
 from FunctionalIntentHandlers.Launches.Handlers import LaunchLastHandler              #@ The most recent launch
 
 # Landing Pads
-from FunctionalIntentHandlers.LandingPads.Handlers import LandingPadsHandler          #@ Find out about Space/X's landing pads
+from FunctionalIntentHandlers.LandingPads.Handlers import LandingPadsHandler          #@ Find out about Space/X's landing pads, zones and drone ships
 
 # Company
-from FunctionalIntentHandlers.Info.Handlers import CompanyHandler               #@ Get information about the Space/X company itself
+from FunctionalIntentHandlers.Info.Handlers import CompanyHandler                     #@ Get information about the Space/X company itself
 
 # Set logging level
 logger = logging.getLogger(__name__)
@@ -68,7 +68,7 @@ sb.add_request_handler(HelpIntentHandler())
 
 # Roadster Handlers
 sb.add_request_handler(RoadsterMarsHandler())
-sb.add_request_handler(AssistanceHandler())
+sb.add_request_handler(AssistHandler())
 sb.add_request_handler(RoadsterOrbitHandler())
 sb.add_request_handler(RoadsterLocationHandler())
 sb.add_request_handler(RoadsterSpeedHandler())
@@ -85,7 +85,7 @@ sb.add_request_handler(ChangeUnitsHandler())
 sb.add_request_handler(LandingPadsHandler())
 
 # Company Handler
-sb.add_request_handler(CompanyIntentHandler())
+sb.add_request_handler(CompanyHandler())
 
 # Exception Handler to deal with mop up
 sb.add_exception_handler(CatchAllExceptionHandler())
