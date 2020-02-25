@@ -33,6 +33,31 @@ class LandingPadsHandler(AbstractRequestHandler):
 
         slots = handler_input.request_envelope.request.intent.slots
         speak_output = ""
+        
+        
+        try:
+            slot  = slots["DroneShip"].resolutions
+            for rpa in slot.resolutions_per_authority:
+                if (rpa.status.code == "ER_SUCCESS_MATCH"):
+                    droneship=a.values[0].value.id
+                    
+                    
+            speak_output = "Stuff about " + droneship
+            
+            return (
+                handler_input.response_builder
+                    .speak(speak_output)
+                    .ask(speak_output)
+                    .response
+                )
+        except:
+            speak_output = ""
+        
+        
+            
+        card_title   = "Space/X Landing Pads"
+        card_text    = "Landing Pads (Land and Sea)"
+
         try:
             landingarea  = str(slots["LandingArea"].resolutions.resolutions_per_authority[0].values[0].value.id)
                 
@@ -63,9 +88,6 @@ class LandingPadsHandler(AbstractRequestHandler):
                     speak_output = speak_output + i['full_name'] + ', ' 
             
                 
-        card_title   = "Space/X Landing Pads"
-        card_text    = "Landing Pads (Land and Sea)"
-        
         return (
             handler_input.response_builder
                 .speak(speak_output)

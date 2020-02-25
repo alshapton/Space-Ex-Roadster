@@ -5,9 +5,9 @@ This file is used to driver the handlers for the following intents:
     Intent              Handler
     ======              =======
     
-    RoadsterOrbit       RoadsterOrbitIntentHandler
-    RoadsterSpeed       RoadsterSpeedIntentHandler
-    RoadsterLocation    RoadsterLocationIntentHandler
+    RoadsterOrbit       RoadsterOrbitHandler
+    RoadsterSpeed       RoadsterSpeedHandler
+    RoadsterLocation    RoadsterLocationHandler
     RoadsterInfo        RoadsterInfoHandler
     RoadsterMars        RoadsterMarsHandler
     
@@ -23,7 +23,7 @@ from ask_sdk_model import ui
 
 from FunctionalIntentHandlers.Roadster.roadster import roadster
 
-class RoadsterOrbitIntentHandler(AbstractRequestHandler):
+class RoadsterOrbitHandler(AbstractRequestHandler):
     """Handler for Orbit of Roadster Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -74,7 +74,7 @@ class RoadsterSpeedHandler(AbstractRequestHandler):
                 .response
         )
     
-class RoadsterLocationIntentHandler(AbstractRequestHandler):
+class RoadsterLocationHandler(AbstractRequestHandler):
     """Handler for Location of Roadster Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool

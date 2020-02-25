@@ -16,7 +16,7 @@ from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput 
 
 
-class ChangeUnitsIntentHandler(AbstractRequestHandler):
+class ChangeUnitsHandler(AbstractRequestHandler):
     """Handler for Change units Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool

@@ -22,7 +22,7 @@ from FunctionalIntentHandlers.Launches.launches import launches
 from utilities import getJson, getTimezone
 
 
-class LaunchesNextHandler(AbstractRequestHandler):
+class LaunchNextHandler(AbstractRequestHandler):
     """Handler for querying the next launch """
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -55,7 +55,7 @@ class LaunchesNextHandler(AbstractRequestHandler):
                 .response
         )
     
-class LaunchesLastHandler(AbstractRequestHandler):
+class LaunchLastHandler(AbstractRequestHandler):
     """Handler for querying the last launch """
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool

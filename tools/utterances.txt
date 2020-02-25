@@ -1,0 +1,87 @@
+
+
+RoadsterLocation
+Find the location of the Tesla Roadster
+	How far is the roadster from Earth
+	How far is the Tesla from Earth
+	Where is the Tesla
+	Where is the roadster
+
+
+ChangeUnits
+<BLANK>
+	Change units to {units}
+
+
+RoadsterSpeed
+Find out how fast the vehicle is travelling
+	What's the Tesla's speed
+	What is the roadster's speed
+	How fast is the Tesla going
+	How fast is Starman going 
+
+
+RoadsterMars
+Find the location of the Tesla Roadster with respect to Mars
+	How close is the Tesla to Mars
+	How far is the roadster from Mars
+	How far is the Tesla from Mars
+
+
+RoadsterOrbit
+Information about the eliptical orbit of the Tesla roadster
+	Tell me about the Tesla's orbit
+	What's the car's' orbit
+	What is the roadster's orbit
+	Tell me about the car's orbit
+	Tell me about the roadster's orbit
+
+
+Assist
+<BLANK>
+	Help me with {assistanceSubject}
+
+
+RoadsterInfo
+Get the complete low-down on the Roadster
+	Tell me all about the Tesla
+	Tell me about the Tesla
+	Tell me about the car
+	Tell me about the roadster
+
+
+LaunchNext
+The next launch
++	sxi {TimeZone} sxi ln
+	What is the next launch
+	whats the next launch
+	Whens the next launch
+	When is the next launch
+
+
+LaunchLast
+The most recent launch
++	sxi {TimeZone} sxi ll
+	Tell me about the most recent launch
+	Tell me about the last launch
+	W was the most recent launch
+	What was the most recent launch
+	what was the last launch
+	When was the last launch
+
+
+LandingPads
+Find out about Space/X's landing pads
+	T me about the drone ship {DroneShip}
+	T me about the {LandingArea}
+	Tell me about the landing areas
+
+
+Company
+Get information about the Space/X company itself
+	What is spaceX
+*	What is space ex
+	What is space x
+	Tell me about space x
+*	Tell me about Space ex
+	Tel me about SpaceX
