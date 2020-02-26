@@ -193,8 +193,8 @@
             }
           ],
           "samples": [
-            "T me about the drone ship {DroneShip}",
-            "T me about the {LandingArea}",
+            "Tell me about the drone ship {DroneShip}",
+            "Tell me about the {LandingArea}",
             "Tell me about the landing areas"
           ]
         },
@@ -473,5 +473,5 @@
       }
     ]
   },
-  "version": "54"
+  "version": "55"
 }

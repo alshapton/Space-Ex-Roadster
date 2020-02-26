@@ -3,8 +3,10 @@
   "locale": "en-GB",
   "type": "text",
   "userInput": [
-  	"alexa open space x info", "tell me about space x",
-  	"whens the next launch", "when was the last launch",
+  	"alexa open space x info", 
+	"tell me about space x",
+	"whens the next launch", 
+	"when was the last launch",
 	"exit"
 	]
 }
