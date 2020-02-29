@@ -1,5 +1,20 @@
+#!/usr/local/bin python3
+
+# include standard modules
+import argparse
 import json
 
+
+def initParser():
+	# initiate the parser
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-D", "--display", help="Show suspicious utterances", action="store_true")
+	parser.add_argument("-V", "--version", help="Display version information", action="store_true")
+
+	# read arguments from the command line
+	args = parser.parse_args()
+	return args
+	
 
 def get_model(model):
 	with open('../models/' + model) as json_file:
@@ -21,6 +36,18 @@ def get_pysource(req_source):
 	completes=completes[0:-1] + "}"
 	return json.loads(completes)
 
+
+# Begin main program
+
+
+args=initParser()
+
+
+# check for --display or -D
+show_suspicious=False
+if args.display:
+	show_suspicious=True
+
 model=get_model('en-GB.json')
 cintents = get_pysource('../lambda/lambda_function.py')
 
@@ -40,13 +67,22 @@ for intent in  intents:
 			if ("space ex" not in sample.lower()):
 				pass
 			else:
-				print("*\t" + sample + "\n")
+				if show_suspicious:
+					print("*\t" + sample + "\n")
 				continue
 			# Flag any "sxi" occurrences
 			if ("sxi" not in sample.lower()):
 				pass
 			else:
-				print("+\t" + sample + "\n")
+				if show_suspicious:
+					print("+\t" + sample + "\n")
 				continue
 				
 			print("\t" + sample + "\n")
+		x=str(intent["slots"])
+		if (x!="[]"):
+			print(x)
+		#if (str(intent["slots"]) != "[]"): 
+		#	pass
+		#else:
+		#print("\t"+str(intent["slots"])+"\n")

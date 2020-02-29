@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import boto3
+#import boto3
 
 import logging
 import ask_sdk_core.utils as ask_utils
@@ -10,7 +10,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input       import HandlerInput
 
-import pytz
+#import pytz
 
 # UI components
 from ask_sdk_model import Response
@@ -51,7 +51,6 @@ from FunctionalIntentHandlers.Info.Handlers import CompanyHandler               
 # Set logging level
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
 
 # The SkillBuilder object acts as the entry point for the skill, routing all request and response
 # payloads to the handlers above. 

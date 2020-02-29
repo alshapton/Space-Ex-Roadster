@@ -33,6 +33,7 @@ Swap units of measure (Miles/Km)
 
 	Change units to {units}
 
+[{'name': 'units', 'type': 'RoadsterUnitsType'}]
 
 
 Find out how fast the vehicle is travelling
@@ -61,7 +62,7 @@ Information about the eliptical orbit of the Tesla roadster
 
 	Tell me about the Tesla's orbit
 
-	What's the car's' orbit
+	What's the car's orbit
 
 	What is the roadster's orbit
 
@@ -75,6 +76,7 @@ Get mode detailled help
 
 	Help me with {assistanceSubject}
 
+[{'name': 'assistanceSubject', 'type': 'AssistanceSubjectType', 'samples': ['{assistanceSubject}']}]
 
 
 Get the complete low-down on the Roadster
@@ -87,38 +89,37 @@ Get the complete low-down on the Roadster
 
 	Tell me about the roadster
 
+[{'name': 'RoadsterInformation', 'type': 'RoadsterInfoType', 'samples': ['{RoadsterInformation}']}]
 
 
 The next launch
 
-+	sxi {TimeZone} sxi ln
-
 	What is the next launch
 
-	whats the next launch
+	What's the next launch
 
-	Whens the next launch
+	When's the next launch
 
 	When is the next launch
 
+[{'name': 'TimeZone', 'type': 'TimeZoneType'}]
 
 
 The most recent launch
-
-+	sxi {TimeZone} sxi ll
 
 	Tell me about the most recent launch
 
 	Tell me about the last launch
 
-	W was the most recent launch
+	When was the most recent launch
 
 	What was the most recent launch
 
-	what was the last launch
+	What was the last launch
 
 	When was the last launch
 
+[{'name': 'TimeZone', 'type': 'TimeZoneType'}]
 
 
 Find out about Space/X's landing pads, zones and drone ships
@@ -129,21 +130,14 @@ Find out about Space/X's landing pads, zones and drone ships
 
 	Tell me about the landing areas
 
+[{'name': 'LandingArea', 'type': 'LandingAreaType'}, {'name': 'DroneShip', 'type': 'LandingZoneList'}]
 
 
 Get information about the Space/X company itself
 
-	What is spaceX
+	What is SpaceX
 
-*	What is space ex
-
-	What is space x
-
-	Tell me about space x
-
-*	Tell me about Space ex
-
-	Tel me about SpaceX
+	Tell me about SpaceX
 
 
 # Release History
